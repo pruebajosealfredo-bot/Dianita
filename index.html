@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flores Para Dianita 🌻</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="flower-container"></div>
+  <script>
+    const flowers = ["🌼", "🌷", "🌸", "💮", "🏵️"];
+    const container = document.querySelector(".flower-container");
+
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+
+      // Posición y tamaño aleatorios
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.fontSize = 16 + Math.random() * 24 + "px";
+      flower.style.animationDuration = 4 + Math.random() * 4 + "s";
+      flower.style.animationDelay = "0s";
+
+      container.appendChild(flower);
+
+      // Remover después de animar
+      setTimeout(() => {
+        flower.remove();
+      }, parseFloat(flower.style.animationDuration) * 1000);
+    }
+
+    // Crear una flor cada 0.5s
+    setInterval(createFlower, 500);
+  </script>
+  <div class="container">
+    <div class="envelope">
+      <div class="envelope-inner">
+
+        <!-- Frente de la carta -->
+         
+        <div class="envelope-front">
+          <div class="postage-stamp">
+            <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 300 300" xml:space="preserve">
+              <path d="M253.98,257.652c0-8.568,8.568-17.748,17.136-18.361c-1.224-4.895-1.224-10.402-0.611-15.299 ..."></path>
+            </svg>
+          </div>
+          <div class="address">
+            <p><span>Para:</span> <span>Dianita Lau</span></p>
+            <p><span>De:</span> <span>A.</span></p>
+            <img src="mochixd-2.png" alt="love2" class="custom-image2">
+          </div>
+        </div>
+
+        <!-- Reverso con la carta -->
+        <div class="envelope-back">
+          <div class="top-fold"></div>
+          <div class="letter">
+
+            <p>Para Una Persona Bonita ❤️ <span class="highlight">¡Te Quiero Mucho!</span></p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 🌼 Botón debajo de la carta -->
+    <p></p>
+    <p></p>
+    <button id="goToFlowers" class="letter-button">  Siguiente 🌻</button>
+  </div>
+
+  <!-- 🎵 Audio oculto -->
+  <audio id="bg-music" loop>
+    <source src="flormusica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    const envelope = document.querySelector(".envelope");
+    const music = document.getElementById("bg-music");
+
+    // Abrir/cerrar carta + reproducir música en el primer click
+    envelope.addEventListener("click", () => {
+      envelope.classList.toggle("open");
+
+      if (music.paused) {
+        music.play().catch(err => {
+          console.log("El navegador bloqueó el autoplay hasta interacción:", err);
+        });
+      }
+    });
+
+    // Redirigir al index1 al tocar el botón
+    document.getElementById("goToFlowers").addEventListener("click", () => {
+      window.location.href = "index1.html";
+    });
+  </script>
+</body>
+</html>
