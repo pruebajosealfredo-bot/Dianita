@@ -241,6 +241,11 @@ body {
   height: 150px;
   object-fit: contain; 
 }
+.custom-image3 {
+  width: 350px;
+  height: 350px;
+  object-fit: contain; 
+}
 
 .highlight {
   display: block; 
